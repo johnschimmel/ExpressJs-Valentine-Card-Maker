@@ -1,6 +1,7 @@
-var express = require('express');
-var ejs = require('ejs');
+var express = require('express'); // 
+var ejs = require('ejs'); //embedded javascript template engine
 var app = express.createServer(express.logger());
+
 
 /*********** SERVER CONFIGURATION *****************/
 app.configure(function() {
@@ -38,20 +39,24 @@ app.configure(function() {
 });
 /*********** END SERVER CONFIGURATION *****************/
 
-
+// the images for people to choose from. all images in /static/img
 valentineImages = ['cat.jpg','ducky.jpg','myLittlePony.jpg'];
 
-cardArray = []; // this array will hold card data from forms
+// this array will hold card data from forms
+cardArray = [];
 
+// main page - display the card form
 app.get('/', function(request, response) {
     var templateData = { 
         pageTitle : 'Valentine Card Maker',
-        message: 'Hello Dynamic Web Class!',
         images: valentineImages
     };
     
+    // render the card_form template with the data above
     response.render("card_form.html",templateData);
 });
+// end of main page
+
 
 app.post('/', function(request, response){
     console.log("Inside app.post('/')");
@@ -59,7 +64,7 @@ app.post('/', function(request, response){
     console.log(request.body);
     
     // Simple data object to hold the form data
-    newCard = {
+    var newCard = {
         to : request.body.to,
         from : request.body.from,
         message : request.body.message,
@@ -72,14 +77,16 @@ app.post('/', function(request, response){
     // Get the position of the card in the cardArray
     cardNumber = cardArray.length - 1;
     
-    response.redirect('/card/' + cardNumber);
+    response.redirect('/card/' + cardNumber); // for example /card/1
 });
 
-
+// Display a specific card 
 app.get('/card/:cardNumber', function(request, response){
-    
+    // get the requested card number
+    cardNumber = request.params.cardNumber;
+
     // Get the card from cardArray
-    cardData = cardArray[request.params.cardNumber]
+    cardData = cardArray[cardNumber];  // cardData contains 'to','from','message','image'
     
     if (cardData != undefined) {
         
