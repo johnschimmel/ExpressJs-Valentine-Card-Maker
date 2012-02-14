@@ -39,7 +39,7 @@ app.configure(function() {
 /*********** END SERVER CONFIGURATION *****************/
 
 
-valentineImages = ['catWithHeart.jpg','ducky.jpg','myLittlePony.jpg'];
+valentineImages = ['cat.jpg','ducky.jpg','myLittlePony.jpg'];
 
 cardArray = []; // this array will hold card data from forms
 
