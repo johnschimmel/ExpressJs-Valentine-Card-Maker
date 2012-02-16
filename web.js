@@ -57,7 +57,7 @@ app.get('/', function(request, response) {
 });
 // end of main page
 
-
+// receive a form submission
 app.post('/', function(request, response){
     console.log("Inside app.post('/')");
     console.log("form received and includes")
@@ -99,6 +99,22 @@ app.get('/card/:cardNumber', function(request, response){
         
     }
     
+});
+
+
+// Route to display card form template without the layout (Header and Footer)
+app.get('/notfancy',function(request, response){
+    
+    // display the card form template without the default Layout (header and footer). 
+    // set templateData.layout = false as show below.
+    // layout : false tells express to not use the layout template and just render and return the requested template
+    
+    var templateData = { 
+        pageTitle : 'Valentine Card Maker',
+        images: valentineImages,
+        layout: false
+    };
+    response.render("card_form.html",templateData);
 });
 
 

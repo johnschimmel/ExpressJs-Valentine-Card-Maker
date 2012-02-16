@@ -13,6 +13,7 @@ POST / renders the saves card data to a javascript array for later retrieval. Re
 
 GET /card/:cardNumber pulls a specific card from the cardData array and renders the /views/card_display.html.
 
+GET /notfancy demonstrates template rendering without a layout
 
 
 The files were created from the Heroku tutorial, "Getting Started with Node.js on Heroku/Cedar" http://devcenter.heroku.com/articles/node-js
